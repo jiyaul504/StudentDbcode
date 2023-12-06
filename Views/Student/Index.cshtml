@@ -3,99 +3,94 @@
 @{
     ViewData["Title"] = "Index";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-<h1>Index</h1>
+        .container {
+            margin-top: 50px;
+        }
 
+        .table {
+            background-color: #fff;
+        }
 
+        th, td {
+            text-align: center;
+            vertical-align: middle !important;
+        }
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2Xofnv8hTnZjpLEGIlFZlMz3n5n04l72SAqQ" crossorigin="anonymous">
+        .actions {
+            display: flex;
+            justify-content: space-around;
+        }
 
+        a.btn {
+            text-decoration: none;
+        }
 
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlaceofBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nationality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateofBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Idtype)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Idnumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlaceofBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateofBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Idtype)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Idnumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StudentGid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StudentGid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StudentGid">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<a asp-action="Export">Print Recored</a>
-
-
+        .print-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Student Records</h1>
+        <p class="text-right">
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+                    <th>@Html.DisplayNameFor(model => model.PlaceofBirth)</th>
+                    <th>@Html.DisplayNameFor(model => model.Nationality)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateofBirth)</th>
+                    <th>@Html.DisplayNameFor(model => model.Idtype)</th>
+                    <th>@Html.DisplayNameFor(model => model.Idnumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                    <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                    <th>@Html.DisplayNameFor(model => model.FullAddress)</th>
+                    <th>@Html.DisplayNameFor(model => model.IsActive)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.StudentName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PlaceofBirth)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Nationality)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateofBirth)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Idtype)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Idnumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FullAddress)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                        <td class="actions">
+                            <a asp-action="Edit" asp-route-id="@item.StudentGid" class="btn btn-info">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.StudentGid" class="btn btn-success">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.StudentGid" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-action="Export" class="btn btn-secondary print-button">Print Records</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

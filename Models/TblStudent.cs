@@ -34,8 +34,7 @@ public partial class TblStudent
 
     public DateOnly? MDate { get; set; }
     
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+    
     public DateTime? MDateTime { get; set; }
 
 }

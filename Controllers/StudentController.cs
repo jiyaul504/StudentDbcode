@@ -157,12 +157,12 @@ namespace StudentDbcode.Controllers
         {
             return _context.TblStudents.Any(e => e.StudentGid == id);
         }
-
+        //Export Data
         public IActionResult Export()
         {
             var students = _context.TblStudents.ToList();
             var csv = new StringBuilder();
-            csv.AppendLine("Id,FirstName,LastName,Age,Grade,Address,Email"); // CSV header
+            csv.AppendLine("StudentGid,StudentName,,Age,Nationality,FullAddress,PlaceofBirth"); // CSV header
 
             foreach (var student in students)
             {
